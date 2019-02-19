@@ -11,7 +11,7 @@
         "php": ">=7.0.0",
         "doctrine/collections": "^1.5",
         "symfony/dom-crawler": "^3.4",
-        "mervick/curl-helper": "dev-master"
+        "mervick/curl-helper": "^1.1"
     },
     "minimum-stability": "dev"
 }

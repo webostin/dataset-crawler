@@ -1,7 +1,7 @@
 DatasetCrawler Component
 ====================
 
-Component to easy create data sets from provider urls. It uses DomCrawler symfony component.
+Component to easy create data sets from provided urls. It uses DomCrawler symfony component.
 Just create a DatasetCrawler instance class to collect data sets e.g.
 
 ```

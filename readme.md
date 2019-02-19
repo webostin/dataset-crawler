@@ -14,7 +14,7 @@ use Webostin\Component\DatasetCrawler\Builder;
 
 class MyDatasetCrawler extends AbstractCrawler {
     
-    protected function buildAttrivutes(Builder $builder){
+    protected function buildAttributes(Builder $builder){
         $builder
             ->add('page_title', MetaTitleType::class); 
     }

@@ -4,8 +4,17 @@
 namespace Webostin\Component\DatasetCrawler;
 
 
+use Webostin\Component\DatasetCrawler\Provider\CurlProvider;
+
 abstract class AbstractCrawler
 {
+    /**
+     * @var HtmlProviderInterface
+     */
+    protected $htmlProvider;
+    /**
+     * @var string
+     */
     protected $url;
 
     abstract protected function buildAttributes(Builder $builder);
@@ -34,17 +43,23 @@ abstract class AbstractCrawler
         return $dataset;
     }
 
-
+    /**
+     * @param string $url
+     * @return string
+     */
     protected function get(string $url): string
     {
-        $curl = new \CurlHelper($url);
-        $curl->follow(true);
-        $response = $curl->exec();
-
-        if ($response['status'] == 200) {
-            return $response['content'];
+        // setting curl as default
+        if (!($this->htmlProvider instanceof HtmlProviderInterface)) {
+            $this->htmlProvider = new CurlProvider();
         }
-
-        return '';
+        return $this->htmlProvider->getHtml($url);
     }
+
+    public function setHtmlProvider(HtmlProviderInterface $htmlProvider)
+    {
+        $this->htmlProvider = $htmlProvider;
+        return $this;
+    }
+
 }
